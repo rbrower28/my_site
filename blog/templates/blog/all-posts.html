@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block title %}
   All Posts
 {% endblock %}
 
 
 {% block css_files %}
+  <link rel="stylesheet" href="{% static "blog/includes/post.css" %}" />
+  <link rel="stylesheet" href="{% static "blog/includes/header.css" %}" />
   <link rel="stylesheet" href="{% static "blog/all-posts.css" %}" />
 {% endblock %}
 
@@ -26,5 +29,4 @@
       {% include "blog/includes/post.html" %}
     </ul>
   </section>
-
 {% endblock %}
