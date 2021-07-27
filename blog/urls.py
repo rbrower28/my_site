@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"), # /blog/
-    path("posts/", views.posts), # /blog/posts/
-    path("posts/my-first-post", views.first_post) # /blog/posts/my-first-post
+    path("", views.starting_page, name="starting-page"), # /blog/
+    path("posts/", views.posts, name="posts-page"), # /blog/posts/
+    path("posts/<slug:slug>", views.post, name="post-detail-page") # /blog/posts/my-first-post
 ]

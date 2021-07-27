@@ -1,15 +1,15 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponseNotFound
-from django.urls import reverse
+
 
 # Create your views here.
 
-def index(request):
-    return HttpResponse("<h1>What's up world!</h1>")
+def starting_page(request):
+    return render(request, "blog/index.html")
 
 def posts(request):
-    pass
+    return render(request, "blog/all-posts.html")
 
-def first_post(request):
+def post(request):
     pass
