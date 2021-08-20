@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+  Get Posts
+{% endblock %}
+
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "blog/stored-posts.css" %}" />
+  <link rel="stylesheet" href="{% static "blog/includes/post.css" %}" />
+  <link rel="stylesheet" href="{% static "blog/includes/header.css" %}" />
+{% endblock %}
+
+
+{% block content %}
+  {% include "blog/includes/header.html" %}
+
+  <section id="stored-posts">
+    <h2>Saved for Later</h2>
+
+    {% if not has_posts %}
+      <p>You didn't save any posts for later.</p>
+    {% endif %}
+    <ul>
+      {% for post in posts %}
+        <div id="blog-post">
+          <div id="read-later">
+            <form action="{% url "read-later" %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" value="{{ post.id }}" name="post_id">
+              <button>Remove</button>
+            </form>
+          </div>
+          {% include "blog/includes/post.html" %}
+        </div>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
